@@ -62,9 +62,9 @@ class Settings(BaseSettings):
     TEST_DATABASE_DB: str = "postgres"
     TEST_SQLALCHEMY_DATABASE_URI: str = ""
 
-    # FIRST SUPERUSER
-    FIRST_SUPERUSER_EMAIL: EmailStr
-    FIRST_SUPERUSER_PASSWORD: str
+    # FIRST ADMIN
+    FIRST_ADMIN_EMAIL: EmailStr
+    FIRST_ADMIN_PASSWORD: str
 
     @validator("DEFAULT_SQLALCHEMY_DATABASE_URI")
     def _assemble_default_db_connection(cls, v: str, values: dict[str, str]) -> str:

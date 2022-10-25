@@ -10,7 +10,7 @@ on:
 
 jobs:
   manual_push_image_to_dockerhub:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
 
@@ -37,4 +37,4 @@ jobs:
           file: minimal_project/Dockerfile
           context: minimal_project
           push: true
-          tags: rafsaf/minimal-fastapi-postgres-template:${{ github.event.inputs.tag }}
+          tags: kfelts/minimal-fastapi-postgres-template:${{ github.event.inputs.tag }}

@@ -57,9 +57,9 @@ class Settings(BaseSettings):
     TEST_DATABASE_DB: str
     TEST_SQLALCHEMY_DATABASE_URI: str = ""
 
-    # FIRST SUPERUSER
-    FIRST_SUPERUSER_EMAIL: EmailStr
-    FIRST_SUPERUSER_PASSWORD: str
+    # FIRST ADMIN
+    FIRST_ADMIN_EMAIL: EmailStr
+    FIRST_ADMIN_PASSWORD: str
 
     # VALIDATORS
     @validator("BACKEND_CORS_ORIGINS")

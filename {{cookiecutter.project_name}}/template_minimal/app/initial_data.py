@@ -2,7 +2,7 @@
 Put here any Python code that must be runned before application startup.
 It is included in `init.sh` script.
 
-By defualt `main` create a superuser if not exists
+By default `main` create a admin if not exists
 """
 
 import asyncio
@@ -18,22 +18,22 @@ async def main() -> None:
     print("Start initial data")
     async with async_session() as session:
         result = await session.execute(
-            select(User).where(User.email == config.settings.FIRST_SUPERUSER_EMAIL)
+            select(User).where(User.email == config.settings.FIRST_ADMIN_EMAIL)
         )
         user: User | None = result.scalars().first()
 
         if user is None:
-            new_superuser = User(
-                email=config.settings.FIRST_SUPERUSER_EMAIL,
+            new_admin = User(
+                email=config.settings.FIRST_ADMIN_EMAIL,
                 hashed_password=security.get_password_hash(
-                    config.settings.FIRST_SUPERUSER_PASSWORD
+                    config.settings.FIRST_ADMIN_PASSWORD
                 ),
             )
-            session.add(new_superuser)
+            session.add(new_admin)
             await session.commit()
-            print("Superuser was created")
+            print("Admin was created")
         else:
-            print("Superuser already exists in database")
+            print("Admin already exists in database")
 
         print("Initial data created")
 

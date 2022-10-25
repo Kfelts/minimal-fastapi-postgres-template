@@ -2,7 +2,7 @@
 Put here any Python code that must be runned before application startup.
 It is included in `init.sh` script.
 
-By defualt `main` create a superuser if it does not exist.
+By default `main` create a admin if it does not exist.
 """
 
 import asyncio
@@ -23,7 +23,7 @@ async def main() -> None:
     async with async_session() as session:
         result = await session.execute(
             select(UserTable).where(
-                UserTable.email == config.settings.FIRST_SUPERUSER_EMAIL
+                UserTable.email == config.settings.FIRST_ADMIN_EMAIL
             )
         )
         user: Optional[UserTable] = result.scalars().first()
@@ -31,17 +31,17 @@ async def main() -> None:
         if user is None:
             await SQLAlchemyUserDatabase(schemas.UserDB, session, UserTable).create(
                 schemas.UserDB(
-                    email=config.settings.FIRST_SUPERUSER_EMAIL,
-                    is_superuser=True,
+                    email=config.settings.FIRST_ADMIN_EMAIL,
+                    is_admin=True,
                     is_verified=True,
                     hashed_password=get_password_hash(
-                        config.settings.FIRST_SUPERUSER_PASSWORD
+                        config.settings.FIRST_ADMIN_PASSWORD
                     ),
                 )
             )
-            print("Superuser was created")
+            print("Admin was created")
         else:
-            print("Superuser already exists in database")
+            print("Admin already exists in database")
 
         print("Initial data created")
 

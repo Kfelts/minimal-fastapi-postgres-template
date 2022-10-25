@@ -1,8 +1,8 @@
-<a href="https://minimal-fastapi-postgres-template.rafsaf.pl/" target="_blank">
-    <img src="https://img.shields.io/badge/live%20example-https%3A%2F%2Fminimal--fastapi--postgres--template.rafsaf.pl-blueviolet" alt="Live example">
+<a href="https://minimal-fastapi-postgres-template.kfelts.pl/" target="_blank">
+    <img src="https://img.shields.io/badge/live%20example-https%3A%2F%2Fminimal--fastapi--postgres--template.kfelts.pl-blueviolet" alt="Live example">
 </a>
-<a href="https://github.com/rafsaf/minimal-fastapi-postgres-template/blob/main/LICENSE" target="_blank">
-    <img src="https://img.shields.io/github/license/rafsaf/minimal-fastapi-postgres-template" alt="License">
+<a href="https://github.com/kfelts/minimal-fastapi-postgres-template/blob/main/LICENSE" target="_blank">
+    <img src="https://img.shields.io/github/license/kfelts/minimal-fastapi-postgres-template" alt="License">
 </a>
 <a href="https://docs.python.org/3/whatsnew/3.10.html" target="_blank">
     <img src="https://img.shields.io/badge/python-3.10-blue" alt="Python">
@@ -10,8 +10,8 @@
 <a href="https://github.com/psf/black" target="_blank">
     <img src="https://img.shields.io/badge/code%20style-black-lightgrey" alt="Black">
 </a>
-<a href="https://github.com/rafsaf/minimal-fastapi-postgres-template/actions/workflows/tests.yml" target="_blank">
-    <img src="https://github.com/rafsaf/minimal-fastapi-postgres-template/workflows/tests/badge.svg" alt="Tests">
+<a href="https://github.com/kfelts/minimal-fastapi-postgres-template/actions/workflows/tests.yml" target="_blank">
+    <img src="https://github.com/kfelts/minimal-fastapi-postgres-template/workflows/tests/badge.svg" alt="Tests">
 </a>
 
 # Minimal async FastAPI + PostgreSQL template
@@ -48,7 +48,7 @@
 
 <br>
 
-_Check out also online example: https://minimal-fastapi-postgres-template.rafsaf.pl, it's 100% code used in template with added domain and https only._
+_Check out also online example: https://minimal-fastapi-postgres-template.kfelts.pl, it's 100% code used in template with added domain and https only._
 
 ![template-fastapi-minimal-openapi-example](./docs/template-minimal-openapi-example.png)
 
@@ -60,7 +60,7 @@ _Check out also online example: https://minimal-fastapi-postgres-template.rafsaf
 pip install cookiecutter
 
 # And cookiecutter this project :)
-cookiecutter https://github.com/rafsaf/minimal-fastapi-postgres-template
+cookiecutter https://github.com/kfelts/minimal-fastapi-postgres-template
 
 # if you want experimental fastapi-users template
 # check "experimental_fastapi_users_template"
@@ -120,7 +120,7 @@ pytest
 
 ## About
 
-This project is heavily based on the official template https://github.com/tiangolo/full-stack-fastapi-postgresql (and on my previous work: [link1](https://github.com/rafsaf/fastapi-plan), [link2](https://github.com/rafsaf/docker-fastapi-projects)), but as it now not too much up-to-date, it is much easier to create new one than change official. I didn't like some of conventions over there also (`crud` and `db` folders for example or `schemas` with bunch of files).
+This project is heavily based on the official template https://github.com/tiangolo/full-stack-fastapi-postgresql (and on my previous work: [link1](https://github.com/kfelts/fastapi-plan), [link2](https://github.com/kfelts/docker-fastapi-projects)), but as it now not too much up-to-date, it is much easier to create new one than change official. I didn't like some of conventions over there also (`crud` and `db` folders for example or `schemas` with bunch of files).
 
 `2.0` style SQLAlchemy API is good enough so there is no need to write everything in `crud` and waste our time... The `core` folder was also rewritten. There is great base for writting tests in `tests`, but I didn't want to write hundreds of them, I noticed that usually after changes in the structure of the project, auto tests are useless and you have to write them from scratch anyway (delete old ones...), hence less than more. Similarly with the `User` model, it is very modest, with just `id` (uuid), `email` and `password_hash`, because it will be adapted to the project anyway.
 

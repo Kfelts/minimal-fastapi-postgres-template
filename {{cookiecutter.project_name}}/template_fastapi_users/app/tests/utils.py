@@ -21,14 +21,14 @@ async def create_db_user(
     email: str,
     hashed_password: str,
     session: AsyncSession,
-    is_superuser: bool = False,
+    is_admin: bool = False,
     is_verified: bool = True,
 ) -> schemas.UserDB:
 
     new_user = await SQLAlchemyUserDatabase(schemas.UserDB, session, UserTable).create(
         schemas.UserDB(
             email=EmailStr(email),
-            is_superuser=is_superuser,
+            is_admin=is_admin,
             is_verified=is_verified,
             hashed_password=hashed_password,
         )

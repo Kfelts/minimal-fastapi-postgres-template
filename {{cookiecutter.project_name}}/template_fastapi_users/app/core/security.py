@@ -16,7 +16,7 @@ https://fastapi-users.github.io/fastapi-users/configuration/user-manager/
 
 from typing import Optional
 
-from fastapi import Request
+from fastapi import Request, requests
 from fastapi_users.authentication import (
     AuthenticationBackend,
     BearerTransport,

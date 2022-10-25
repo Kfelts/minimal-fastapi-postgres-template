@@ -31,8 +31,8 @@ def create_env_file_and_remove_env_template():
 
 
 if __name__ == "__main__":
-    truthy = ["T", "t", "true", "True", 1]
-    falsy = ["F", "f", "false", "False", 0]
+    truthy = ["y", "T", "t", "true", "True", 1]
+    falsy = ["n", "F", "f", "false", "False", 0]
     if USE_FASTAPI_USERS in truthy:
         used_template = "template_fastapi_users"
     elif USE_FASTAPI_USERS in falsy:

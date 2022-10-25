@@ -14,8 +14,8 @@ from app.tests import utils
 
 default_user_email = "geralt@wiedzmin.pl"
 default_user_hash = get_password_hash("geralt")
-superuser_user_email = "yennefer@wiedzmin.pl"
-superuser_user_hash = get_password_hash("yennefer")
+admin_user_email = "yennefer@wiedzmin.pl"
+admin_user_hash = get_password_hash("yennefer")
 
 
 @pytest.fixture(scope="session")
@@ -57,7 +57,7 @@ async def default_user(session: AsyncSession):
 
 
 @pytest.fixture
-async def superuser_user(session: AsyncSession):
+async def admin_user(session: AsyncSession):
     return await utils.create_db_user(
-        superuser_user_email, superuser_user_hash, session, is_superuser=True
+        admin_user_email, admin_user_hash, session, is_admin=True
     )
