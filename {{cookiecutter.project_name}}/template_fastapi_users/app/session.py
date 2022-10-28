@@ -3,6 +3,7 @@ from sqlalchemy.orm.session import sessionmaker
 
 from app.core import config
 
+
 if config.settings.ENVIRONMENT == "PYTEST":
     sqlalchemy_database_uri = config.settings.TEST_SQLALCHEMY_DATABASE_URI
 else:

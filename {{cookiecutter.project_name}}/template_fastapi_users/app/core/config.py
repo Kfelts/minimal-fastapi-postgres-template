@@ -12,22 +12,24 @@ For project name, version, description we use pyproject.toml
 For the rest, we use file `.env` (gitignored), see `.env.example`
 
 `DEFAULT_SQLALCHEMY_DATABASE_URI` and `TEST_SQLALCHEMY_DATABASE_URI`:
-Both are ment to be validated at the runtime, do not change unless you know
+Both are meant to be validated at the runtime, do not change unless you know
 what are you doing. All the two validators do is to build full URI (TCP protocol)
 to databases to avoid typo bugs.
 
 See https://pydantic-docs.helpmanual.io/usage/settings/
 """
-
+import os
 from pathlib import Path
-from typing import Literal, Union
-
+from typing import Literal, Union, List, bool
 import toml
-from pydantic import AnyHttpUrl, AnyUrl, BaseSettings, EmailStr, validator
+from pydantic import AnyHttpUrl, AnyUrl, BaseSettings, EmailStr, validator, Field
+
+def get_env_file():
+    stage = os.environ.get('ENV') or 'dev'
+    return f"{stage}.env"
 
 PROJECT_DIR = Path(__file__).parent.parent.parent
 PYPROJECT_CONTENT = toml.load(f"{PROJECT_DIR}/pyproject.toml")["tool"]["poetry"]
-
 
 class Settings(BaseSettings):
     # CORE SETTINGS
@@ -35,6 +37,9 @@ class Settings(BaseSettings):
     ENVIRONMENT: Literal["DEV", "PYTEST", "STAGE", "PRODUCTION"]
     ACCESS_TOKEN_EXPIRE_MINUTES: int
     BACKEND_CORS_ORIGINS: Union[str, list[AnyHttpUrl]]
+    REDIRECT_URL: AnyHttpUrl
+    OAUTH_ENABLED: bool(object)
+    OAUTH_CONFIG: List[str] = []
 
     # PROJECT NAME, VERSION AND DESCRIPTION
     PROJECT_NAME: str = PYPROJECT_CONTENT["name"]
@@ -60,6 +65,19 @@ class Settings(BaseSettings):
     # FIRST ADMIN
     FIRST_ADMIN_EMAIL: EmailStr
     FIRST_ADMIN_PASSWORD: str
+
+    # OAUTH CLIENTS
+    OAUTH_FACEBOOK: bool = False
+    FACEBOOK_CLIENT_ID: str
+    FACEBOOK_CLIENT_SECRET: str
+    OAUTH_GOOGLE: bool = False
+    GOOGLE_CLIENT_ID: str
+    GOOGLE_CLIENT_SECRET: str
+    OAUTH_TWITTER: bool = False
+    OAUTH_GITHUB: bool = False
+    GITHUB_CLIENT_ID: str
+    GITHUB_CLIENT_SECRET: str
+
 
     # VALIDATORS
     @validator("BACKEND_CORS_ORIGINS")
@@ -92,7 +110,6 @@ class Settings(BaseSettings):
 
     class Config:
         env_file = f"{PROJECT_DIR}/.env"
-        case_sensitive = True
-
+        case_sensitive = False
 
 settings: Settings = Settings()  # type: ignore

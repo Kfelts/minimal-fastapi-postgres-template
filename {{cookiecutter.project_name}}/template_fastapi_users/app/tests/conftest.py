@@ -2,20 +2,20 @@ import asyncio
 from typing import AsyncGenerator
 
 import pytest
-from fastapi_users.password import get_password_hash
 from httpx import AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core import config
+from app.core.security import get_password_hash
 from app.main import app
 from app.models import Base
 from app.session import async_engine, async_session
 from app.tests import utils
 
-default_user_email = "geralt@wiedzmin.pl"
-default_user_hash = get_password_hash("geralt")
-admin_user_email = "yennefer@wiedzmin.pl"
-admin_user_hash = get_password_hash("yennefer")
+default_user_email = "luke@jediknight.gov"
+default_user_hash = get_password_hash("luke")
+admin_user_email = "leia@jedigeneral.gov"
+admin_user_hash = get_password_hash("leia")
 
 
 @pytest.fixture(scope="session")

@@ -6,7 +6,7 @@ from pydantic.networks import EmailStr
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app import schemas
-from app.models import UserTable
+from app.models import User
 
 
 def random_lower_string(length: int = 32) -> str:
@@ -23,10 +23,10 @@ async def create_db_user(
     session: AsyncSession,
     is_admin: bool = False,
     is_verified: bool = True,
-) -> schemas.UserDB:
+) -> schemas.UserCreate:
 
-    new_user = await SQLAlchemyUserDatabase(schemas.UserDB, session, UserTable).create(
-        schemas.UserDB(
+    new_user = await SQLAlchemyUserDatabase(schemas.UserDB, session, User).create(
+        schemas.UserCreate(
             email=EmailStr(email),
             is_admin=is_admin,
             is_verified=is_verified,

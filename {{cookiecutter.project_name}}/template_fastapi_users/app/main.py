@@ -5,7 +5,7 @@ Main FastAPI app instance declaration
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.api import api_router
+from app.api.auth_router import router
 from app.core import config
 
 app = FastAPI(
@@ -26,4 +26,4 @@ if config.settings.BACKEND_CORS_ORIGINS:
         allow_headers=["*"],
     )
 
-app.include_router(api_router)
+app.include_router(router)

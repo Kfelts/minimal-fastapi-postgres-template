@@ -8,28 +8,19 @@ authors = ["admin <admin@example.com>"]
 alembic = "^1.8.1"
 asyncpg = "^0.26.0"
 celery = "^5.2.7"
-fastapi-users = {version = "^10.2.0", extras = ["sqlalchemy2"]}
+fastapi-users = {version = "^10.2.0", extras = ["sqlalchemy", "oauth"]}
+fastapi-users-db-sqlalchemy = "^3.0.1"
 pydantic = {version = "^1.10.2", extras = ["email"]}
 python = "^3.10"
 python-dotenv = "^0.21.0"
 python-multipart = "^0.5.0"
+ReactPy = "^0.0.4"
 SQLAlchemy = {version = "^1.4.42", extras = ["asyncio"]}
-
-
-##a list of all of the optional dependencies
-[tool.poetry.extras]
-redis = " "
-minio = " "
-ipython = "^8.5.0"
-
-
-[tool.poetry.group.dev-dependencies.black]
-version = "^22.1.0" 
-allow-prereleases = true
-python = "3.10"
+toml = "^0.10.2"
 
 [tool.poetry.dev-dependencies]
 autoflake = "^1.7"
+black = "^22.1.0"
 uvicorn = "^0.18.3"
 flake8 = "^5.0.1"
 isort = "^5.10.1"

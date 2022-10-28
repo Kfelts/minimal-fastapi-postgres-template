@@ -5,16 +5,18 @@ name = "{{cookiecutter.project_name}}"
 version = "0.1.0-alpha"
 
 [tool.poetry.dependencies]
-python = "^3.10"
-
-PyJWT = { extras = ["crypto"], version = "^2.5.0" }
-SQLAlchemy = { extras = ["asyncio"], version = "^1.4.41" }
 alembic = "^1.8.1"
 asyncpg = "^0.26.0"
+celery = "^5.2.7"
 fastapi = "^0.85.0"
-passlib = { extras = ["bcrypt"], version = "^1.7.4" }
-pydantic = { extras = ["email", "dotenv"], version = "^1.10.2" }
+passlib = { version = "^1.7.4", extras = ["bcrypt"]  }
+pydantic = { version = "^1.10.2", extras = ["email", "dotenv"] }
+PyJWT = { version = "^2.5.0", extras = ["crypto"]  }
+python = "^3.10"
+python-dotenv = "^0.21.0"
 python-multipart = ">=0.0.5,<0.0.6"
+ReactPy = "^0.0.4"
+SQLAlchemy = { extras = ["asyncio"], version = "^1.4.41" }
 toml = "^0.10.2"
 
 [tool.poetry.dev-dependencies]
